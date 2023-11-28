@@ -76,13 +76,13 @@
   </section>
 
   <section>
-    <h2>Pages:</h2>
+    <h2>Pages:</h2> <a href="/add_page/{{ db_version.dashboard.id }}">Add Page</a><br><br>
     {% for page in db_version.dashboard.pages %}
       <article>
-        <h3>Page ID: {{ page.id }}, Page Name: {{ page.name }}</h3>
+        <h3>Page ID: {{ page.id }}, Page Name: {{ page.name }} <a  href="/update_page/{{ page.id }}"> :  Update Page</a><a  href="/delete_page/{{ page.id }}">  ; delete Page</a></h3><a href="/add_widget/{{page.id}}">Add Widget</a><br><br>
         <ul>
           {% for widget in page.widgets %}
-            <li class="widget-card">Widget ID: {{ widget.id }}, Widget Name: {{ widget.name }}</li>
+            <li class="widget-card">Widget ID: {{ widget.id }}, Widget Name: {{ widget.name }}<a  href="/update_widget/{{ widget.id }}"> :  Update Widget</a>  <a href="/delete_widget/{{ widget.id }}">   delete Widget</a></li>
           {% endfor %}
         </ul>
       </article>

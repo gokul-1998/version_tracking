@@ -1,0 +1,1 @@
+{"dashboard": {"name": "Dashboard 1", "description": "This is the first dashboard", "pages": [{"id": 1, "name": "page 1.2", "dashboard_id": 1, "widgets": [{"id": 1, "name": "widget 1.2", "page_id": 1}, {"id": 3, "name": "widget 3.1", "page_id": 1}]}, {"id": 2, "name": "Page 2.2", "dashboard_id": 1, "widgets": [{"id": 2, "name": "widget 2.2", "page_id": 2}]}]}}

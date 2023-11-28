@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Version Difference</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    .dashboard-container {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    h2 {
+      color: #555;
+    }
+
+    .added {
+      color: green;
+    }
+
+    .removed {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Version Difference</h1>
+
+  {% for version in versions %}
+    <div class="dashboard-container">
+      <h1>{{ version["dashboard"]["name"] }}</h1>
+      <p>{{ version["dashboard"]["description"] }}</p>
+
+      {% set length = version["dashboard"]["pages"][0]["widgets"]|length %}
+
+      {% for page in version["dashboard"]["pages"] %}
+        <h2>{{ page["name"] }}</h2>
+        {% for widget in page["widgets"] %}
+          {% if loop.index <= length %}
+            <p class="added">{{ widget["name"] }}</p>
+          {% else %}
+            <p class="removed">{{ widget["name"] }}</p>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</body>
+</html>
