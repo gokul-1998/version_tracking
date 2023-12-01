@@ -1,88 +1,9 @@
-{
-  "versions": [
-    {
-      "version": "v1",
-      "changes": {
-        "dashboard": {
-          "pages": [
-            {
-              "id": 1,
-              "name": "page 1.1",
-              "widgets": [
-                {
-                  "id": 1,
-                  "name": "widget 1.1"
-                }
-              ]
-            }
-          ]
-        }
+{'dashboard': {'id': 1, 'name': 'Dashboard 1', 'description': 'This is the first dashboard', 'pages': [
+      {'id': 1, 'name': 'page 1', 'dashboard_id': 1, 'widgets': [
+          {'id': 1, 'name': 'widget 1', 'page_id': 1
+          }
+        ]
       }
-    },
-    {
-      "version": "v2",
-      "changes": {
-        "dashboard": {
-          "pages": [
-            {
-              "id": 1,
-              "name": "page 1.2",
-              "widgets": [
-                {
-                  "id": 1,
-                  "name": "widget 1.2"
-                }
-              ]
-            },
-            {
-              "id": 2,
-              "name": "Page 2.2",
-              "widgets": [
-                {
-                  "id": 2,
-                  "name": "widget 2.2"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "version": "v3",
-      "changes": {
-        "dashboard": {
-          "pages": [
-            {
-              "id": 1,
-              "widgets": [
-                {
-                  "id": 3,
-                  "name": "widget 3.1"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
-    {
-      "version": "v4",
-      "changes": {
-        "dashboard": {
-          "pages": [
-            {
-              "id": 1,
-              "widgets": [
-                {
-                  "id": 3,
-                  "name": "widget 3.1"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    }
-  ]
+    ]
+  }
 }

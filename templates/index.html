@@ -68,21 +68,60 @@
   <header>
     <h1>Welcome to the Dashboard</h1>
   </header>
+  
+  
 
+  
+  <input type="hidden" id="dashboard_id" value="{{ dashboard_data['dashboard']['id'] }}">
+  <label for="VersionDropdown">Select a Version:</label>
+    <select value="{{current_version}}" id="VersionDropdown" onchange={navigateToPage()}>
+      {% for version in all_versions %} 
+      
+      {% if version.version == current_version|int %}
+      <option value="{{ version.version }}" selected>{{ version.version }}</option>
+      {% else %}
+        <option value="{{ version.version }}">{{ version.version }}</option>
+      {% endif %}
+      {% endfor %}
+      
+    </select>
+<!-- dsadsad -->
+<br>
+
+    <script>
+        // document.getElementById("demo").style.display = "none";
+        function navigateToPage() {
+            // Get the selected value from the dropdown
+            
+           
+            var selectedValue = document.getElementById("VersionDropdown").value;
+            var dashboard_id = document.getElementById("dashboard_id").value;
+            console.log("selectedValue");
+            console.log(dashboard_id);
+
+            // Navigate to the selected page
+            
+             window.location.href = '/?dashboard_id='+dashboard_id + '&version='+selectedValue;
+              
+            }
+    </script>
+
+  <a href="/add_version/{{dashboard_data['dashboard']['id']}}">Add new Version</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="/delete_version/{{dashboard_data['dashboard']['id']}}/{{ current_version }}">Delete Version {{current_version}}</a><br><br>
   <section>
-    <h2>Dashboard Version: {{ db_version.id }}</h2>
-    <p>Dashboard ID: {{ db_version.dashboard.id }}</p>
-    <p>Dashboard Name: {{ db_version.dashboard.name }}</p>
+    <h2>Dashboard Version: {{ current_version }}</h2>
+    Dashboard ID: {{ dashboard_data['dashboard']['id'] }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Dashboard Name: {{ dashboard_data['dashboard']['name'] }}
   </section>
 
   <section>
-    <h2>Pages:</h2> <a href="/add_page/{{ db_version.dashboard.id }}">Add Page</a><br><br>
-    {% for page in db_version.dashboard.pages %}
+    <h2>Pages:</h2> <a href="/add_page/{{ dashboard_data['dashboard']['id'] }}">Add Page</a><br><br>
+    {% for page in dashboard_data['dashboard']['pages'] %}
       <article>
-        <h3>Page ID: {{ page.id }}, Page Name: {{ page.name }} <a  href="/update_page/{{ page.id }}"> :  Update Page</a><a  href="/delete_page/{{ page.id }}">  ; delete Page</a></h3><a href="/add_widget/{{page.id}}">Add Widget</a><br><br>
+        <h3>Page ID: {{ page['id'] }}, Page Name: {{ page['name'] }} <a  href="/update_page/{{ page['id'] }}"> :  Update Page</a><a  href="/delete_page/{{ page.id }}">  ; delete Page</a></h3><a href="/add_widget/{{page.id}}">Add Widget</a><br><br>
         <ul>
-          {% for widget in page.widgets %}
-            <li class="widget-card">Widget ID: {{ widget.id }}, Widget Name: {{ widget.name }}<a  href="/update_widget/{{ widget.id }}"> :  Update Widget</a>  <a href="/delete_widget/{{ widget.id }}">   delete Widget</a></li>
+          {% for widget in page['widgets'] %}
+            <li class="widget-card">Widget ID: {{ widget['id'] }}, Widget Name: {{ widget['name'] }}<a  href="/update_widget/{{ widget['id'] }}"> :  Update Widget</a>  <a href="/delete_widget/{{ widget['id'] }}">   delete Widget</a></li>
           {% endfor %}
         </ul>
       </article>
